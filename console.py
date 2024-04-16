@@ -10,7 +10,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
-
+import datetime
 
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
@@ -115,19 +115,19 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
-        args = args.split()
+        arg = args.split()
+        class_n = arg[0]
         if not args:
             print("** class name missing **")
             return
-        class_n = args[0]
-        if class_n not in HBNBCommand.classes:
+        elif class_n not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
         param = {}
-        for arg in args[1:]:
-            key, value = arg.split("=")
+        for ar in arg[1:]:
+            key, value = ar.split("=")
             if value.startswith('"'):
-                value = value[1:-1].replace("\_", " ")
+                value = value[1:-1].replace("_", " ").replace("/", " ")
             elif "." in value:
                 try:
                     value = float(value)
@@ -140,7 +140,6 @@ class HBNBCommand(cmd.Cmd):
                 except ValueError:
                     print("Error")
                     continue
-            param[key] = value if key != 'updated_at' else datetime.now()
         try:
             new_instance = HBNBCommand.classes[class_n](**param)
             storage.save()
