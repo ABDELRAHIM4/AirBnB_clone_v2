@@ -144,7 +144,6 @@ class HBNBCommand(cmd.Cmd):
             try:
                 new_instance = HBNBCommand.classes[class_n](**param)
                 storage.save()
-                print(new_instance)
                 print(new_instance.id)
             except ValueError:
                 print("Error")
