@@ -16,7 +16,7 @@ echo " <html>
 	hello
 	</body>
 	</html>" | sudo tee /data/web_static/releases/test/index.html
-sudo chown -R $USER:$USER /data/
+sudo chown -R "$USER":"$USER" /data/
 sudo sed -i 's|root /var/www/html;|root /data/web_static/current;|g' /etc/nginx/sites-available/default
 sudo sed -i 's|index index.html index.htm;|index index.html;|g' /etc/nginx/sites-available/default
 sudo sed -i 's|server_name _;|server_name mydomainname.tech;|g' /etc/nginx/sites-available/default
