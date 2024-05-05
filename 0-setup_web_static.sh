@@ -4,12 +4,14 @@ if ! [ "$(command -v nginx)" ]; then
 	sudo apt-get update
 	sudo apt-get install nginx
 fi
+sudo mkdir -p /data/web_static/
+sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 if [ -L /data/web_static/current ]; then
 	sudo unlink /data/web_static/current
 else
-	ln -sf /data/web_static/current /data/web_static/releases/test/
+	ln -sf /data/web_static/releases/test /data/web_static/current
 fi
 echo " <html>
 	<body>
