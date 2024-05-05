@@ -9,7 +9,7 @@ sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 if [ -L /data/web_static/current ]; then
-	sudo unlink /data/web_static/current
+	sudo rm /data/web_static/current
 else
 	ln -sf /data/web_static/releases/test /data/web_static/current
 fi
