@@ -4,10 +4,18 @@ if ! [ "$(command -v nginx)" ]; then
 	sudo apt-get update
 	sudo apt-get install nginx
 fi
-sudo mkdir -p /data/web_static/
-sudo mkdir -p /data/web_static/releases/
-sudo mkdir -p /data/web_static/releases/test/
-sudo mkdir -p /data/web_static/shared/
+if [ ! -d "/data/web_static/" ]; then
+	sudo mkdir -p /data/web_static/
+fi
+if [ ! -d "/data/web_static/releases/" ]; then
+	sudo mkdir -p /data/web_static/releases/
+fi
+if [ ! -d "/data/web_static/releases/test" ]; then
+	sudo mkdir -p /data/web_static/releases/test/
+fi
+if [ ! -d "/data/web_static/shared/" ]; then
+	sudo mkdir -p /data/web_static/shared/
+fi
 if [ -L /data/web_static/current ]; then
 	sudo rm /data/web_static/current
 else
