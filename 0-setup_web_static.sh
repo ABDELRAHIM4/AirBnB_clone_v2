@@ -21,10 +21,12 @@ if [ -L /data/web_static/current ]; then
 else
 	ln -sf /data/web_static/releases/test /data/web_static/current
 fi
-echo " <html>
-	<body>
-	hello
-	</body>
+echo "<html>
+  	<head>
+  	</head>
+  	  <body>
+    	    Holberton School
+  	  </body>
 	</html>" | sudo tee /data/web_static/releases/test/index.html
 sudo chown -R "$USER":"$USER" /data/
 sudo sed -i 's|root /var/www/html;|root /data/web_static/current;|g' /etc/nginx/sites-available/default
