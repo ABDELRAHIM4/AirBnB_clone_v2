@@ -33,4 +33,5 @@ sudo sed -i 's|root /var/www/html;|root /data/web_static/current;|g' /etc/nginx/
 sudo sed -i 's|index index.html index.htm;|index index.html;|g' /etc/nginx/sites-available/default
 sudo sed -i 's|server_name _;|server_name mydomainname.tech;|g' /etc/nginx/sites-available/default
 sudo sed -i 's|location / {|location /hbnb_static {|g' /etc/nginx/sites-available/default
+sudo sed -i '/server {/a \    location /hbnb_static {\n\t\talias /data/web_static/releases/test;\n\t}\n' /etc/nginx/sites-available/default
 sudo service nginx restart
