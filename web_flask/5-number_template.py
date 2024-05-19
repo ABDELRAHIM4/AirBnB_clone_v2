@@ -29,6 +29,6 @@ def py_num(n):
         return ("{} is a number".format(n))
 @skills_app.route("/number_template/<int:n>", strict_slashes=False)
 def py_in(n):
-	return render_template("5-number.html")
+	return render_template("5-number.html", n=n)
 if __name__ == "__main__":
         skills_app.run(debug=True, host='0.0.0.0', port=5000)
